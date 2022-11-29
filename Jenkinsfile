@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                let json=Jira.postman_collection.json;
-				let keys=JSON.parse(json);
-				keys.text=${textIssue} 
+            	sh "npm run changevariable"
 				sh newman run json.json
             }
         }
