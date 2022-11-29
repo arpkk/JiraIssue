@@ -8,6 +8,7 @@ pipeline {
             steps {
 		echo "hace algo"
 	        sh "npm init"
+	        sh "npm install socket.io --save"
 		sh "npm run build"
             	sh 'npm run changevariable.js'
 		sh 'npm install -g newman'
