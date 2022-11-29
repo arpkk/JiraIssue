@@ -7,11 +7,11 @@ pipeline {
         stage('Build') { 
             steps {
 		echo "hace algo"
-            	sh "npm run changevariable.js"
-		sh "npm install -g newman"
+            	sh 'npm run changevariable.js'
+		sh 'npm install -g newman'
             	echo Jira.postman_collection.json
 		echo json.json
-		sh "newman run json.json"
+		sh 'newman run json.json'
             }
         }
     }
