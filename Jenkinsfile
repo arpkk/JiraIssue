@@ -5,7 +5,6 @@ pipeline {
         stage('Build') { 
             steps {
 		echo "hace algo"
-	        sh "npm install"
             	sh 'npm run changevariable.js'
 		sh 'npm install -g newman'
             	echo Jira.postman_collection.json
