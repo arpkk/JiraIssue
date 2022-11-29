@@ -4,7 +4,8 @@ pipeline {
         stage('Build') { 
             steps {
             	sh "npm run changevariable"
-				sh newman run json.json
+            	echo Jira.postman_collection.json
+		sh "newman run json.json"
             }
         }
     }
