@@ -2,10 +2,6 @@ pipeline {
     agent any 
     tools{nodejs "nodejs"}
     stages {
-	    stage("Prep for per-dir Jenkinsfile") {
-            checkout(scm)
-            sh 'git clean -fdx'
-          }
         stage('Build') { 
             steps {
 		echo "hace algo"
