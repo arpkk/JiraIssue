@@ -17,7 +17,7 @@ pipeline {
 		--header 'Cookie: atlassian.xsrf.token=5d3b4c67-268c-48e9-b2df-7d68175487ac_e9b0ba25c6a3ddeafd00fc4e74c28c189aac7608_lin' \
 		--data-raw '{
 		    "fields": {
-			"summary": "attachment",
+			"summary": "$TEXTISSUE",
 			"issuetype": {
 			    "id": "10002"
 			},
