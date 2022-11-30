@@ -25,10 +25,10 @@ pipeline {
 			    "version": 1,
 			    "content": [
 				{
-				    "type": "${params.TextIssue}",
+				    "type": "test",
 				    "content": [
 					{
-					    "text": "${params.TextIssue}",
+					    "text": "jenkins",
 					    "type": "text"
 					}
 				    ]
