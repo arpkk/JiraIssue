@@ -29,7 +29,7 @@ pipeline {
 			    "version": 1,
 			    "content": [
 				{
-				    "type": "$TEXTISSUE",
+				    "type": "paragraph",
 				    "content": [
 					{
 					    "text": "$TEXTISSUE",
