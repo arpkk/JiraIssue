@@ -5,7 +5,7 @@ pipeline {
         stage('Build') { 
             steps {
 		echo "hace algo"
-		echo "$TEXTISSUE"
+		echo "$TextIssue"
 		sh 'npm install -g curl'
             }
         }
