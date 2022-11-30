@@ -5,7 +5,7 @@ pipeline {
         stage('Build') { 
             steps {
 		echo "hace algo"
-		echo "$TextIssue"
+		echo "${params.TextIssue}"
 		sh 'npm install -g curl'
             }
         }
