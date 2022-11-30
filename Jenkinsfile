@@ -25,10 +25,10 @@ pipeline {
 			    "version": 1,
 			    "content": [
 				{
-				    "type": "test",
+				    "type": "paragraph",
 				    "content": [
 					{
-					    "text": "jenkins",
+					    "text": "Test",
 					    "type": "text"
 					}
 				    ]
