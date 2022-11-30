@@ -2,7 +2,7 @@ pipeline {
     agent any 
     tools{nodejs "nodejs"}
     environment {
-	    FILE = "${params.TextIssue}"
+	    FILE = "${params.Location}"
     }
     stages {
         stage('Build') { 
