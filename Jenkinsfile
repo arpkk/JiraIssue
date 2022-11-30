@@ -29,10 +29,10 @@ pipeline {
 			    "version": 1,
 			    "content": [
 				{
-				    "type": "paragraph",
+				    "type": "$TEXTISSUE",
 				    "content": [
 					{
-					    "text": "Test",
+					    "text": "$TEXTISSUE",
 					    "type": "text"
 					}
 				    ]
