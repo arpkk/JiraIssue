@@ -10,6 +10,42 @@ pipeline {
 		echo "hace algo"
 		echo "$TEXTISSUE"
 		sh 'npm install -g curl'
+	        sh '
+		    wget --no-check-certificate --quiet \
+		  --method POST \
+		  --timeout=0 \
+		  --header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
+		  --header 'Content-Type: application/json' \
+		  --header 'Cookie: atlassian.xsrf.token=5d3b4c67-268c-48e9-b2df-7d68175487ac_e9b0ba25c6a3ddeafd00fc4e74c28c189aac7608_lin' \
+		  --body-data '{
+		    "fields": {
+			"summary": "attachment",
+			"issuetype": {
+			    "id": "10002"
+			},
+			"project": {
+			    "key": "IR"
+			},
+			"description": {
+			    "type": "doc",
+			    "version": 1,
+			    "content": [
+				{
+				    "type": "paragraph",
+				    "content": [
+					{
+					    "text": "Test",
+					    "type": "text"
+					}
+				    ]
+				}
+			    ]
+			}
+		    }
+		}' \
+		   'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test'
+		    
+		    '
 	    }
         }
     }
