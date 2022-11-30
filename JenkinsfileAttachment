@@ -3,7 +3,7 @@ pipeline {
     tools{nodejs "nodejs"}
     environment {
 	    FILE = "${params.Location}"
-	    IR = "{params.IRIssue}"
+	    IR = "${params.IRIssue}"
     }
     stages {
         stage('Build') { 
