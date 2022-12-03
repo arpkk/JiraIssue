@@ -75,7 +75,7 @@ pipeline {
 			    ]
 			}
 		    }
-		}'| jq -r '.key')
+		}'| /usr/local/bin/jq ".key")
 		    
 		    
 		    
