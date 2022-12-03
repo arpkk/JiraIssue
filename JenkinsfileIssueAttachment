@@ -76,11 +76,12 @@ pipeline {
 			    ]
 			}
 		    }
-		}'| /usr/local/bin/jq ".key")
-		    
+		}')
 		    
 		    
 		'''
+		
+		echo $ISSUE_IR | grep -o '"key":"[^"]*' | grep -o '[^"]*$'
 	    }
         }
     }
