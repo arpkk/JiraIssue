@@ -12,7 +12,6 @@ pipeline {
 		echo "hace algo"
 		echo "$FILE"
 		echo "$IR"
-		sh 'npm install -g curl'
 		
 		echo """
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/IR-33/attachments' \
