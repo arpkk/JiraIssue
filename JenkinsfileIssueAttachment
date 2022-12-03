@@ -81,7 +81,7 @@ pipeline {
 		    
 		'''
 		
-		echo $ISSUE_IR | grep -o '"key":"[^"]*' | grep -o '[^"]*$'
+		echo $ISSUE_IR | grep -o '"key":"[^"]*' | grep -o '[^"]*' | tail -1
 	    }
         }
     }
