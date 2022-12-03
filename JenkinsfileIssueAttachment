@@ -9,7 +9,6 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$TEXTISSUE"
-		sh "npm install -g jq"
 		
 		echo '''
 		
@@ -80,7 +79,7 @@ pipeline {
 		
 		'''
 		
-		echo $ISSUE_IR
+		echo "$ISSUE_IR"
 	    }
         }
     }
