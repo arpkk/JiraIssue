@@ -9,6 +9,7 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$TEXTISSUE"
+		sh "npm install jq"
 		
 		echo '''
 		
