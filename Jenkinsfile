@@ -9,8 +9,8 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$TEXTISSUE"
-		sh 'npm install -g curl'
-	        sh """
+
+		sh """
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: application/json' \
