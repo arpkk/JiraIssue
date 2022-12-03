@@ -78,7 +78,7 @@ pipeline {
 		
 		'''
 		
-		sh 'echo $ISSUE_IR'
+		sh 'echo $ISSUE_IR.key'
 		
 	    }
         }
