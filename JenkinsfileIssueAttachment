@@ -76,12 +76,13 @@ pipeline {
 			    ]
 			}
 		    }
-		}')
+		}' | jq -r '.key')
 		    
 		    
 		'''
 		
-		echo $ISSUE_IR | grep -o '"key":"[^"]*' | grep -o '[^"]*' | tail -1
+		echo $ISSUE_IR
+		sh "echo $ISSUE_IR"
 	    }
         }
     }
