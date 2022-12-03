@@ -78,7 +78,7 @@ pipeline {
 		
 		'''
 		
-		echo "$ISSUE_IR"
+		echo ISSUE_IR
 		
 	    }
         }
