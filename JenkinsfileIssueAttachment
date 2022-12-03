@@ -80,7 +80,7 @@ pipeline {
 		
 		'''
 		
-		echo $ISSUE_IR | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'
+		echo $ISSUE_IR | grep -Eo '"key"[^,]*'
 	    }
         }
     }
