@@ -6,8 +6,8 @@ pipeline {
     agent any 
     tools{nodejs "nodejs"}
     environment {
-	TEXTISSUE = "${params.TextIssue}"
-	    ISSUE_IR= """${readJSON text: sh(returnStdout: true, script: """
+	    TEXTISSUE = "${params.TextIssue}"
+	    response= sh(returnStdout: true, script: """
 	    curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: application/json' \
@@ -38,7 +38,9 @@ pipeline {
 			}
 		    }
 		}'
-		""").key}"""
+	    """)
+	    ISSUE_IR= readJSON text: response
+	    BASE_IR="${ISSUE_IR.key}"
     }
     stages {
         stage('Build') { 
@@ -46,8 +48,9 @@ pipeline {
 		echo "hace algo"
 		echo "$TEXTISSUE"
 		echo "$ISSUE_IR"
+		echo "$BASE_IR"
 		sh """
-		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/$ISSUE_IR/attachments' \
+		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/$BASE_IR/attachments' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: multipart/form-data' \
 		--header 'Cookie: atlassian.xsrf.token=5d3b4c67-268c-48e9-b2df-7d68175487ac_e9b0ba25c6a3ddeafd00fc4e74c28c189aac7608_lin' \
@@ -55,7 +58,7 @@ pipeline {
 		--header 'Accept: application/json' \
 		--form 'file=@"$WORKSPACE/archivos/archivo.txt"'
 		"""
-	    } 
+	    }
         }
     }
 }
