@@ -44,7 +44,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-		config=readJSON text: {ISSUE_IR}
+		config=readJSON text: $ISSUE_IR
 		baseUrl = "${config.key}"
 		echo "hace algo"
 		echo "$TEXTISSUE"
