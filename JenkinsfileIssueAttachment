@@ -39,7 +39,7 @@ pipeline {
 		    }
 		}'
 	    """), returnPojo: true
-	    IR=${response['key']}
+	    IR=${response.key}
 	    
     }
     stages {
