@@ -42,7 +42,7 @@ pipeline {
 		    }
 		}')
 		
-		echo "cosa Var=${ISSUE_IR}"
+		echo "cosa Var=$ISSUE_IR | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'"
 		
 		'''
 		
