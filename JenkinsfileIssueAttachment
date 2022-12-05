@@ -3,7 +3,14 @@ pipeline {
     tools{nodejs "nodejs"}
     environment {
 	    TEXTISSUE = "${params.TextIssue}"
-	    sh '''
+    }
+    stages {
+        stage('Build') { 
+            steps {
+		echo "hace algo"
+		echo "$TEXTISSUE"
+		
+		sh '''
 		ISSUE_IR=$(curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: application/json' \
@@ -36,18 +43,13 @@ pipeline {
 		}')
 		
 		'''
-    }
-    stages {
-        stage('Build') { 
-            steps {
-		echo "hace algo"
-		echo "$TEXTISSUE"
-		echo "$ISSUE_IR"
+		
+		echo ISSUE_IR
 
 		
 		echo "aca termina el post"
 		
-	    }
+	    } 
         }
     }
 }
