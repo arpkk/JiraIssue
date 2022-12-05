@@ -77,7 +77,7 @@ pipeline {
 		}')
 		
 		'''
-		echo $ISSUE_IR | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'
+		sh "echo $ISSUE_IR | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$' "
 		
 		
 		
