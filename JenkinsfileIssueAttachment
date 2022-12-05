@@ -44,7 +44,7 @@ pipeline {
 		
 		'''
 		
-		echo ISSUE_IR
+		echo 'Cosa= Var=$ISSUE_IR'
 
 		
 		echo "aca termina el post"
