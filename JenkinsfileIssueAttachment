@@ -36,7 +36,7 @@ pipeline {
 		}'
 		""")
 		
-		config=readJSON $ISSUE_IR
+		config=readJSON text: $ISSUE_IR
 		baseUrl = "${config.key}"
     }
     stages {
