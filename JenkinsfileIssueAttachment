@@ -36,7 +36,7 @@ pipeline {
 		}'
 		""")
 		
-		IR=$ISSUE_IR.key
+		IR=$(echo "$ISSUE_IR" | sed -nE 's/.*"key":"([^\"]*)",".*/\1/p')
     }
     stages {
         stage('Build') { 
