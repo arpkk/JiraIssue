@@ -36,7 +36,7 @@ pipeline {
 		}'
 		""")
 		
-		IR=$ISSUE_I | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'
+		IR=$ISSUE_ID \| grep -Eo '"key"[^,]*' \| grep -Eo '[^:]*$'
     }
     stages {
         stage('Build') { 
