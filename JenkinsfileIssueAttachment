@@ -42,7 +42,7 @@ pipeline {
 		    }
 		}')
 		
-		echo "cosa '$ISSUE_IR' | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'"
+		echo "cosa $ISSUE_IR.key"
 		
 		'''
 		
