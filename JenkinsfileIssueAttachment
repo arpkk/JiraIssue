@@ -44,7 +44,7 @@ pipeline {
 		
 		'''
 		
-		sh 'echo "cosa Var=$^{ISSUE_IR}"'
+		sh 'echo "cosa Var=${ISSUE_IR}"'
 		
 	    } 
         }
