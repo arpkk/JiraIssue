@@ -42,7 +42,7 @@ pipeline {
 		    }
 		}')
 		
-		echo "cosa $ISSUE_IR.key"
+		KEY= $ISSUE_IR.key
 		
 		'''
 		
