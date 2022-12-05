@@ -36,7 +36,8 @@ pipeline {
 		}'
 		""")
 		
-		IR=$(echo "$ISSUE_IR" | sed -nE 's/.*"key":"([^\"]*)",".*/\1/p')
+		config=readJSON $ISSUE_IR
+		baseUrl = "${config.key}"
     }
     stages {
         stage('Build') { 
