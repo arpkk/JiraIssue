@@ -39,7 +39,7 @@ pipeline {
 		    }
 		}'
 	    """)
-	    IR=response.key
+	    IR=response['key']
 	    
     }
     stages {
@@ -47,6 +47,7 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$response"
+		echo "$IR"
 		sh """
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/aaaaaa/attachments' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
