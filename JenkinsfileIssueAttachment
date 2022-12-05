@@ -78,7 +78,7 @@ pipeline {
 		}')
 		
 		'''
-		
+		echo "aca termina el post"
 		echo "ISSUE_IR"
 		echo "aca termina"
 		
