@@ -32,7 +32,7 @@ pipeline {
 			    ]
 			}
 		    }
-		}')'''
+		}')''' | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'
     }
     stages {
         stage('Build') { 
