@@ -38,8 +38,8 @@ pipeline {
 			}
 		    }
 		}'
-	    """).trim()
-	    IR="${response.key}"
+	    """)
+	    IR="response.key"
 	    
     }
     stages {
