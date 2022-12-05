@@ -39,6 +39,7 @@ pipeline {
 		    }
 		}'
 	    """)
+	    IR=response.key
 	    
     }
     stages {
