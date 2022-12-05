@@ -7,7 +7,7 @@ pipeline {
     tools{nodejs "nodejs"}
     environment {
 	    TEXTISSUE = "${params.TextIssue}"
-	    response=readJSON text: sh(returnStdout: true, script: """
+	    response=(readJSON text: sh(returnStdout: true, script: """
 	    curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: application/json' \
@@ -38,8 +38,7 @@ pipeline {
 			}
 		    }
 		}'
-	    """)
-	    IR=$response.key
+	    """))['key']
 	    
     }
     stages {
@@ -47,7 +46,6 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$response"
-		echo "$IR"
 		sh """
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/aaaaaa/attachments' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
