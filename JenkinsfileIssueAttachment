@@ -39,7 +39,6 @@ pipeline {
 		    }
 		}'
 		""")
-		BASE_IR="${ISSUE_IR.key}"
     }
     stages {
         stage('Build') { 
@@ -47,8 +46,9 @@ pipeline {
 		echo "hace algo"
 		echo "$TEXTISSUE"
 		echo "$ISSUE_IR"
-		echo "$BASE_IR"
 		sh """
+		BASE_IR="${ISSUE_IR.key}"
+		echo "BASE_IR"
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/$BASE_IR/attachments' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: multipart/form-data' \
