@@ -58,7 +58,6 @@ pipeline {
 		--header 'Accept: application/json' \
 		--form 'file=@"$WORKSPACE/archivos/archivo.txt"'
 		"""
-	    }
-        }
-    }
+		}
+	}
 }
