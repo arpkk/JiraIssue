@@ -46,7 +46,7 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$TEXTISSUE"
-		ISSUE_IR= readJSON text: $response
+		ISSUE_IR= readJSON text: ${response}
 		echo "$ISSUE_IR"
 		sh """
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/$ISSUE_IR/attachments' \
