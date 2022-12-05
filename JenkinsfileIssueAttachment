@@ -39,14 +39,14 @@ pipeline {
 		    }
 		}'
 		""")
-
+		BASE_IR="${ISSUE_IR.key}"
     }
     stages {
         stage('Build') { 
             steps {
 		echo "hace algo"
 		echo "$TEXTISSUE"
-		echo "${ISSUE_IR.key}"
+		echo "$BASE_IR"
 	    } 
         }
     }
