@@ -39,7 +39,7 @@ pipeline {
 		    }
 		}'
 		""")
-	    config=readJSON text: $ISSUE_IR
+	    config=readJSON text: ISSUE_IR
     }
     stages {
         stage('Build') { 
