@@ -1,3 +1,7 @@
+#!groovy
+import hudson.model.Result
+import groovy.json.*
+
 pipeline {
     agent any 
     tools{nodejs "nodejs"}
