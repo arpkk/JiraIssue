@@ -39,7 +39,7 @@ pipeline {
             steps {
 		echo "hace algo"
 		echo "$TEXTISSUE"
-		
+		echo "$ISSUE_IR"
 		
 	    } 
         }
