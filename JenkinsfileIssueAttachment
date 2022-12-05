@@ -78,8 +78,9 @@ pipeline {
 		
 		'''
 		echo "aca termina el post"
-		
-		echo "${ISSUE_IR}"
+		response = readJSON text: ISSUE_IR.join(" ")
+            	echo response
+
 		
 		
 	    }
