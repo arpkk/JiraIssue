@@ -42,7 +42,7 @@ pipeline {
 		    }
 		}')
 		
-		KEY= ${ISSUE_IR} | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$'
+		KEY= $(ISSUE_IR | grep -Eo '"key"[^,]*' | grep -Eo '[^:]*$')
 		
 		'''
 		
