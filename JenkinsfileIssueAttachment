@@ -77,7 +77,7 @@ pipeline {
 		}')
 		
 		'''
-		secretKeyISSUE_IR = readJSON(text: ISSUE_IR)
+		secretKeyISSUE_IR = readJSON(text: $ISSUE_IR)
 		
 		echo secretKeyISSUE_IR
 		echo "aca termina el post"
