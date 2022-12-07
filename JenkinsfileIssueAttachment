@@ -16,7 +16,7 @@ import groovy.json.*
       stage('Crear Issue') {
         steps {
 	  sh "chmod +x -R ${env.WORKSPACE}"
-          sh """ TEXT=$TEXTISSUE ./CreateIssue.sh 'TEXT' """
+          sh " TEXT="$TEXTISSUE" ./CreateIssue.sh TEXT "
       }
     }
 
