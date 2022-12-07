@@ -15,7 +15,7 @@ import groovy.json.*
     stages {
       stage('Crear Issue') {
         steps {
-          sh "CreateIssue.sh $TEXTISSUE" 
+          sh "TEXT=$TEXTISSUE ./CreateIssue.sh TEXT" 
       }
     }
 
