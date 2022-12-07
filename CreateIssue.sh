@@ -1,12 +1,14 @@
 #!/bin/bash
 
+echo "$TEXT"
+
 curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
 --header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: atlassian.xsrf.token=5d3b4c67-268c-48e9-b2df-7d68175487ac_e9b0ba25c6a3ddeafd00fc4e74c28c189aac7608_lin' \
 --data-raw '{
     "fields": {
-        "summary": "$TEXT",
+        "summary": """$TEXT""",
         "issuetype": {
             "id": "10002"
         },
@@ -21,7 +23,7 @@ curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/is
                     "type": "paragraph",
                     "content": [
                         {
-                            "text": "$TEXT",
+                            "text": """$TEXT""",
                             "type": "text"
                         }
                     ]
