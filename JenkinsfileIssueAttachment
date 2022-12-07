@@ -1,53 +1,64 @@
 #!groovy
+
 import hudson.model.Result
 import groovy.json.*
 
-pipeline {
-    agent any 
-    tools{nodejs "nodejs"}
-    environment {
-	    TEXTISSUE = "${params.TextIssue}"
-	    response=readJSON text: sh(returnStdout: true, script: """
-	    curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
-		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
-		--header 'Content-Type: application/json' \
-		--header 'Cookie: atlassian.xsrf.token=5d3b4c67-268c-48e9-b2df-7d68175487ac_e9b0ba25c6a3ddeafd00fc4e74c28c189aac7608_lin' \
-		--data-raw '{
-		    "fields": {
-			"summary": "$TEXTISSUE",
-			"issuetype": {
-			    "id": "10002"
-			},
-			"project": {
-			    "key": "IR"
-			},
-			"description": {
-			    "type": "doc",
-			    "version": 1,
-			    "content": [
-				{
-				    "type": "paragraph",
-				    "content": [
-					{
-					    "text": "$TEXTISSUE",
-					    "type": "text"
-					}
-				    ]
-				}
-			    ]
-			}
-		    }
-		}'
-	    """) > log.txt
-	    //IR="${response['key']}"
-	    
+  pipeline {
+    agent any
+    tools {
+      nodejs "nodejs"
     }
+    environment {
+      TEXTISSUE = "${params.TextIssue}"
+    }
+
     stages {
-        stage('Build') { 
-            steps {
-		echo "hace algo"
-		echo "$response"
-		sh """
+      stage('Crear Issue') {
+        steps {
+          sh """
+          curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
+        --header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
+        --header 'Content-Type: application/json' \
+        --header 'Cookie: atlassian.xsrf.token=5d3b4c67-268c-48e9-b2df-7d68175487ac_e9b0ba25c6a3ddeafd00fc4e74c28c189aac7608_lin' \
+        --data-raw '{
+            "fields": {
+                "summary": "$TEXTISSUE",
+                "issuetype": {
+                    "id": "10002"
+                },
+                "project": {
+                    "key": "IR"
+                },
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "text": "$TEXTISSUE",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }' > log.txt
+        """ 
+      }
+    }
+
+    stage('Build') {
+      environment {
+        log = readJSON file: 'log.txt'
+        IR = "${log.key}"
+      }
+      steps {
+        echo "$log"
+        echo "$IR"
+        sh """
 		curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue/$IR/attachments' \
 		--header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
 		--header 'Content-Type: multipart/form-data' \
@@ -56,7 +67,7 @@ pipeline {
 		--header 'Accept: application/json' \
 		--form 'file=@"$WORKSPACE/archivos/archivo.txt"'
 		"""
-		}
-	}
-}
+      }
+    }
+  }
 }
