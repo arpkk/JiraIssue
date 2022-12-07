@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "'$TEXT'"
+echo ""$TEXT""
 
 curl --location --request POST 'https://pruebaqmetry.atlassian.net/rest/api/3/issue?textoAEnviar=Test' \
 --header 'Authorization: Basic Z2luYS5vemltaXNhQHRzb2Z0Z2xvYmFsLmNvbTpQclRkRkdiNmxvMEtLQXk5Rzd0cTI2NkM=' \
